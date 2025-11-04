@@ -39,12 +39,12 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with: 
-            patch: docs/.vitepress/dist
+            path: docs/.vitepress/dist
 
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployement.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     name: Deploy
