@@ -15,31 +15,31 @@ concurrency:
 
 jobs:
   build:
-    runs-on:
-      steps: 
-        - name: Checkout
-          uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-        - name: Setup Node
-          uses: actions/setup-node@v4
-          with: 
-            node-version: 22
-            cache: npm
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 22
+          cache: npm
 
-        - name: Setup Pages
-          uses: actions/configure-pages@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-        - name: Install dep
-          run: bun Install
+      - name: Install dep
+        run: bun Install
 
-        - name: Build 
-          run: bun run docs:build
+      - name: Build 
+        run: bun run docs:build
 
-        - name: Upload artifact
-          uses: actions/upload-pages-artifact@v3
-          with: 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with: 
             patch: docs/.vitepress/dist
 
   deploy:
